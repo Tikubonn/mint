@@ -213,5 +213,31 @@ int main (){
 		free_mint(numb);
 	}
 	
+	/* test < */
+	
+	{
+		mint *numa = make_mint_from_int(10);
+		mint *numb = make_mint_from_int(10);
+		test(!is_lesser_mint(numa, numb) && !(10 < 10));
+		free_mint(numa);
+		free_mint(numb);		
+	}
+	
+	{
+		mint *numa = make_mint_from_int(9);
+		mint *numb = make_mint_from_int(10);
+		test(is_lesser_mint(numa, numb) && 9 < 10);
+		free_mint(numa);
+		free_mint(numb);		
+	}
+	
+	{
+		mint *numa = make_mint_from_int(11);
+		mint *numb = make_mint_from_int(10);
+		test(!is_lesser_mint(numa, numb) && !(11 < 10));
+		free_mint(numa);
+		free_mint(numb);		
+	}
+	
   return 0;
 }
