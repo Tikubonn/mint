@@ -19,12 +19,14 @@ clean:
 	rm -f compiled/sub_mint_manually.o
 	rm -f compiled/mul_mint_manually.o
 	rm -f compiled/floor_mint_manually.o
+	rm -f compiled/is_positive_mint.o
+	rm -f compiled/is_negative_mint.o
 
-manual.dll: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o
-	gcc $(CFLAGS) -shared compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o  compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o -o manual.dll compiled/floor_mint_manually.o
+manual.dll: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o
+	gcc $(CFLAGS) -shared compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o  compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o -o manual.dll compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o
 	
-manual.lib: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o
-	ar r manual.lib compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o
+manual.lib: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o
+	ar r manual.lib compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o
 
 compiled/init_mint.o: src/init_mint.c
 	gcc $(CFLAGS) -c src/init_mint.c -o compiled/init_mint.o
@@ -70,3 +72,9 @@ compiled/mul_mint_manually.o: src/mul_mint_manually.c
 
 compiled/floor_mint_manually.o: src/floor_mint_manually.c
 	gcc $(CFLAGS) -c src/floor_mint_manually.c -o compiled/floor_mint_manually.o
+
+compiled/is_positive_mint.o: src/is_positive_mint.c
+	gcc $(CFLAGS) -c src/is_positive_mint.c -o compiled/is_positive_mint.o
+
+compiled/is_negative_mint.o: src/is_negative_mint.c
+	gcc $(CFLAGS) -c src/is_negative_mint.c -o compiled/is_negative_mint.o
