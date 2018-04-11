@@ -4,15 +4,17 @@
 int is_greater_mint_in (mint *numa, mint *numb){
   unsigned long sizea = size_mint(numa);
   unsigned long sizeb = size_mint(numb);
-  unsigned long size = max(sizea, sizeb);
-  unsigned long index;
-  for (index = 0; index < size; index++){
-    mint_cell numca = get_mint(index, 0, numa);
-    mint_cell numcb = get_mint(index, 0, numb);
-    if ((numca > numcb) == 0)
-      return 0;
-  }
-  return 1;
+  unsigned long count = max(sizea, sizeb);
+	while (count--){
+    mint_cell numca = get_mint(count, 0, numa);
+    mint_cell numcb = get_mint(count, 0, numb);
+		if (numca == 0 && numcb == 0)
+			continue;
+		if (numca > numcb)
+			return 1;
+		return 0;
+	}
+	return 0;
 }
 
 int is_greater_mint (mint *numa, mint *numb){
