@@ -1,7 +1,7 @@
 #include <mint.h>
 #define max(a, b) (a)<(b)?(b):(a)
 
-int is_lesser_mint (mint *numa, mint *numb){
+int is_lesser_mint_in (mint *numa, mint *numb){
   unsigned long sizea = size_mint(numa);
   unsigned long sizeb = size_mint(numb);
   unsigned long size = max(sizea, sizeb);
@@ -13,4 +13,17 @@ int is_lesser_mint (mint *numa, mint *numb){
       return 0;
   }
   return 1;
+}
+
+int is_lesser_mint (mint *numa, mint *numb){
+	if (is_positive_mint(numa)){
+		if (is_positive_mint(numb))
+			return is_lesser_mint_in(numa, numb);
+		return 0; // numa < numb
+	}
+	else {
+		if (is_negative_mint(numb))
+			return is_lesser_mint_in(numb, numa);
+		return 1; // numa < numb
+	}
 }
