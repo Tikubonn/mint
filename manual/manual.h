@@ -14,3 +14,5 @@
 #include "src/sub_mint_manually.h"
 #include "src/mul_mint_manually.h"
 #include "src/floor_mint_manually.h"
+#include "src/is_positive_mint.h"
+#include "src/is_negative_mint.h"
