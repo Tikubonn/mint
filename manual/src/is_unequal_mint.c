@@ -9,8 +9,8 @@ int is_unequal_mint (mint *numa, mint *numb){
   for (index = 0; index < size; index++){
     mint_cell numca = get_mint(index, 0, numa);
     mint_cell numcb = get_mint(index, 0, numb);
-    if ((numca != numcb) == 0)
-      return 0;
+		if (numca != numcb)
+			return 1;
   }
-  return 1;
+  return 0;
 }
