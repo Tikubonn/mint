@@ -3,5 +3,5 @@
 
 int is_negative_mint (mint *num){
   unsigned long size = size_mint(num);
-  return num->address_beginning[size -1] & 0b10000000;
+  return is_negative(num->address_beginning[size -1]) ? 1 : 0;
 }
