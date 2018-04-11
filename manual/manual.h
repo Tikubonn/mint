@@ -16,3 +16,4 @@
 #include "src/floor_mint_manually.h"
 #include "src/is_positive_mint.h"
 #include "src/is_negative_mint.h"
+#include "src/cast_mint.h"
