@@ -38,6 +38,84 @@ int main (){
     test(inuma == 2828);
   }
 
+  /* test and */
+
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = and_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 2828 & 2525);
+    free_mint(numc);
+  }
+
+  {
+    mint *numa = make_mint_from_int(-1);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = and_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, -1 & 2525);
+    free_mint(numc);
+  }
+
+  /* test or */
+
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = or_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 2828 | 2525);
+    free_mint(numc);
+  }
+
+  {
+    mint *numa = make_mint_from_int(-1);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = or_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, -1 | 2525);
+    free_mint(numc);
+  }
+
+  /* test xor */
+
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = xor_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 2828 ^ 2525);
+    free_mint(numc);
+  }
+
+  {
+    mint *numa = make_mint_from_int(-1);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = xor_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, -1 ^ 2525);
+    free_mint(numc);
+  }
+
+  /* test not */
+
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = not_mint(numa);
+    int inumb = cast_mint_to_int(numb);
+    test2(inumb, ~2828);
+    free_mint(numb);
+  }
+
+  {
+    mint *numa = make_mint_from_int(-1);
+    mint *numb = not_mint(numa);
+    int inumb = cast_mint_to_int(numb);
+    test2(inumb, ~-1);
+    free_mint(numb);
+  }
+
   /* test add */
 
   {
