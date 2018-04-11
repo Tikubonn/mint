@@ -13,7 +13,6 @@ printf("failed: %s\n", #code);\
 exit(1);\
 }
 
-
 int main (){
 
   /* test copy */
@@ -137,6 +136,82 @@ int main (){
     test(inumc == 256 % 3);
     free_mint(numc);
   }
-
+	
+	/* test positive? */
+	
+	{
+		mint *num = make_mint_from_int(0);
+		test(is_positive_mint(num) && 0 <= 0);
+		free_mint(num);
+	}
+	
+	{
+		mint *num = make_mint_from_int(1);
+		test(is_positive_mint(num) && 0 <= 1);
+		free_mint(num);
+	}
+	
+	{
+		mint *num = make_mint_from_int(-1);
+		test(!is_positive_mint(num) && !(0 <= -1));
+		free_mint(num);
+	}
+	
+	/* test negative? */
+	
+	{
+		mint *num = make_mint_from_int(0);
+		test(!is_negative_mint(num) && !(0 < 0));
+		free_mint(num);
+	}
+	
+	{
+		mint *num = make_mint_from_int(1);
+		test(!is_negative_mint(num) && !(1 < 0));
+		free_mint(num);
+	}
+	
+	{
+		mint *num = make_mint_from_int(-1);
+		test(is_negative_mint(num) && (-1 < 0));
+		free_mint(num);
+	}
+	
+	/* test = */
+	
+	{
+		mint *numa = make_mint_from_int(10);
+		mint *numb = make_mint_from_int(10);
+		test(is_equal_mint(numa, numb) && 10 == 10);
+		free_mint(numa);
+		free_mint(numb);
+	}
+	
+	{
+		mint *numa = make_mint_from_int(10);
+		mint *numb = make_mint_from_int(11);
+		test(!is_equal_mint(numa, numb) && !(10 == 11));
+		free_mint(numa);
+		free_mint(numb);
+	}
+	
+	/* test != */
+	
+	{
+		mint *numa = make_mint_from_int(10);
+		mint *numb = make_mint_from_int(10);
+		test(!is_unequal_mint(numa, numb) && !(10 != 10));
+		free_mint(numa);
+		free_mint(numb);
+	}
+	
+	{
+		mint *numa = make_mint_from_int(10);
+		mint *numb = make_mint_from_int(11);
+		test(is_unequal_mint(numa, numb) && 10 != 11);
+		free_mint(numa);
+		free_mint(numb);
+	}
+	
   return 0;
 }
