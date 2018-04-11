@@ -5,12 +5,12 @@ all:
 	make -C manual 
 	make -C auto
 	make -C debug
-	make main.exe
+	make test.exe
 
 clean:
 	make clean -C manual
 	make clean -C auto
 	make clean -C debug
 	
-main.exe: main.c auto/auto.lib manual/manual.lib debug/debug.lib
-	gcc $(CFLAGS) main.c auto/auto.lib manual/manual.lib debug/debug.lib -o main.exe
+test.exe: test.c auto/auto.lib manual/manual.lib debug/debug.lib
+	gcc $(CFLAGS) test.c auto/auto.lib manual/manual.lib debug/debug.lib -o test.exe
