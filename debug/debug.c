@@ -14,7 +14,7 @@ void print_mint_cell_ln (mint_cell numc){
 }
 
 void print_mint (mint *numin){
-  mint_cell *addressnum = numin->address_end;
+  mint_cell *addressnum = numin->address;
   while (numin->address_beginning < addressnum--){
     print_mint_cell(*addressnum);
   }
