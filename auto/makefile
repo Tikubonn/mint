@@ -17,13 +17,12 @@ clean:
 	rm -f compiled/floor_mint.o
 	rm -f compiled/div_mint.o
 	rm -f compiled/mod_mint.o
-	rm -f compiled/make_tmp_mint.o
 
-auto.dll: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o  compiled/make_tmp_mint.o
-	gcc $(CFLAGS) -shared compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o $(ROOTDIR)/manual/manual.dll compiled/make_tmp_mint.o -o auto.dll
+auto.dll: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o 
+	gcc $(CFLAGS) -shared compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o $(ROOTDIR)/manual/manual.dll -o auto.dll
 
-auto.lib: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o compiled/make_tmp_mint.o
-	ar r auto.lib compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o compiled/make_tmp_mint.o
+auto.lib: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o
+	ar r auto.lib compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o
 	
 compiled/make_mint.o: src/make_mint.c
 	gcc $(CFLAGS) -c src/make_mint.c -o compiled/make_mint.o
@@ -63,6 +62,3 @@ compiled/div_mint.o: src/div_mint.c
 
 compiled/mod_mint.o: src/mod_mint.c
 	gcc $(CFLAGS) -c src/mod_mint.c -o compiled/mod_mint.o
-
-compiled/make_tmp_mint.o: src/make_tmp_mint.c
-	gcc $(CFLAGS) -c src/make_tmp_mint.c -o compiled/make_tmp_mint.o

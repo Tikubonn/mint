@@ -12,4 +12,3 @@
 #include "src/floor_mint.h"
 #include "src/div_mint.h"
 #include "src/mod_mint.h"
-#include "src/make_tmp_mint.h"

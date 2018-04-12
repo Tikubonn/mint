@@ -49,9 +49,6 @@ those functions allocate memory automatically with `malloc`.
 | `mint *make_mint (unsigned long)` | make a mint instance that size is first argument. |
 | `mint *make_mint_from_int (int)` | make a mint instance from C integer. |
 | `mint *make_mint_from_long (long)` | make a mint instance from C integer. |
-| `mint *make_tmp_mint (unsigned long)` | make a mint instance that size is first argument. this function defined by macro, so you cannot not use address of this function. this function use `alloca` for memory allocation. so made instance will be released automatically after exit current scope. | 
-| `mint *make_tmp_mint_from_int (int)` | make a mint instance from C integer. this function defined by macro, so you cannot not use address of this function. this function use `alloca` for memory allocation. so made instance will be released automatically after exit current scope. | 
-| `mint *make_tmp_mint_from_long (long)` | make a mint instance from C integer. this function defined by macro, so you cannot not use address of this function. this function use `alloca` for memory allocation. so made instance will be released automatically after exit current scope. | 
 | `void free_mint (mint*)` | release the memory resource that is using by mint instance. |
 | `mint *copy_mint (mint*)` | make a copied mint instance from argument. make a copied mint instance from argument. maybe it is not necessary in your application :D |
 | `mint *and_mint (mint*, mint*)` | return a calculation result of `AND` as new instance. |
