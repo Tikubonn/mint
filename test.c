@@ -41,6 +41,20 @@ int main (){
     test(inuma == 2828);
     free_mint(numa);
   }
+  
+  /* test tmp */
+
+  {
+    mint *numa = make_tmp_mint_from_int(0);
+    int inuma = cast_mint_to_int(numa);
+    test(inuma == 0);
+  }
+
+  {
+    mint *numa = make_tmp_mint_from_int(2828);
+    int inuma = cast_mint_to_int(numa);
+    test(inuma == 2828);
+  }
 
   /* test and */
 
