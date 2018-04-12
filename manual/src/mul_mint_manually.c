@@ -1,7 +1,8 @@
 #include <mint.h>
+#define max(a, b) ((a)<(b)?(b):(a))
 
 static void mul_mint_manually_add (mint *numin, unsigned long offset, unsigned int seek, mint *numout){
-  unsigned long size = size_mint(numin);
+  unsigned long size = size_mint(numout);
   unsigned int car = 0;
   unsigned long index;
   for (index = 0; index < size; index++){
@@ -14,7 +15,7 @@ static void mul_mint_manually_add (mint *numin, unsigned long offset, unsigned i
 }
 
 void mul_mint_manually (mint *numa, mint *numb, mint *numout){
-  unsigned long size = size_mint(numb);
+  unsigned long size = size_mint(numout);
   unsigned long index;
   for (index = 0; index < size; index++){
     mint_cell numc = get_mint(index, 0, numb);
@@ -25,4 +26,5 @@ void mul_mint_manually (mint *numa, mint *numb, mint *numout){
       }
     }
   }
+  trim_mint(numout);
 }

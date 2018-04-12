@@ -11,4 +11,5 @@ void or_mint_manually (mint *numa, mint *numb, mint *numout){
     mint_cell numcb = get_mint(index, 0, numb);
     set_mint(numca | numcb, index, 0, numout);
   }
+  // trim_mint(numout);
 }

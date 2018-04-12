@@ -1,7 +1,7 @@
 #include <mint.h>
 #define max(a, b) (a)<(b)?(b):(a)
 
-static int floor_mint_manually_dividable (mint *numa, unsigned long offset, unsigned int seek, mint *numb){
+static inline int floor_mint_manually_dividable (mint *numa, unsigned long offset, unsigned int seek, mint *numb){
   unsigned long sizea = size_mint(numa);
   unsigned long sizeb = size_mint(numb);
   unsigned long size = max(sizea, sizeb);
@@ -19,7 +19,7 @@ static int floor_mint_manually_dividable (mint *numa, unsigned long offset, unsi
   return 0;
 }
 
-static void floor_mint_manually_sub (mint *numin, unsigned long offset, unsigned int seek, mint *numout){
+static inline void floor_mint_manually_sub (mint *numin, unsigned long offset, unsigned int seek, mint *numout){
   // unsigned long sizea = size_mint(numin);
   // unsigned long sizeb = size_mint(numout);
   // unsigned long size = max(sizea, sizeb);
@@ -51,4 +51,6 @@ void floor_mint_manually (mint *numinmod, mint *numin, mint *numdiv){
       }
     }
   }
+  trim_mint(numinmod);
+  trim_mint(numdiv);
 }

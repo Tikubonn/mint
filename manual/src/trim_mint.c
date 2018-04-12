@@ -9,11 +9,11 @@ static void trim_mint_negative (mint *num){
       if (numcb == 0xff){
         continue;
       }
-      if (numcb & 0b10000000 == 0){
-        num->address = num->address_beginning + count +1; // contain numca
+      if (numcb & 0b10000000){
+        num->address = num->address_beginning + count; // contain numca
         return;
       }
-      num->address = num->address_beginning + count; // numcb only
+      num->address = num->address_beginning + count +1; // numcb only
       return;
     }
     num->address = num->address_beginning + count +1; // contain numca
