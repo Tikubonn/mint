@@ -1,5 +1,6 @@
 export ROOTDIR = $(CURDIR)
 export CFLAGS = -I$(CURDIR) -L$(CURDIR)
+export CC = gcc 
 
 all: 
 	make -C manual 
@@ -13,4 +14,4 @@ clean:
 	make clean -C debug
 	
 test.exe: test.c auto/auto.lib manual/manual.lib debug/debug.lib
-	gcc $(CFLAGS) test.c auto/auto.lib manual/manual.lib debug/debug.lib -o test.exe
+	$(CC) $(CFLAGS) test.c auto/auto.lib manual/manual.lib debug/debug.lib -o test.exe
