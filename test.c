@@ -9,8 +9,10 @@ if (code){ printf("success: %s\n", #code); }\
 else { printf("failed: %s\n", #code); exit(1); }
 
 #define test2(codea, codeb)\
-if ((codea) == (codeb)){ printf("success: %s == %s\n", #codea, #codeb); }\
-else { printf("failed: %s == %s\n", #codea, #codeb); exit(1); }
+int _resa = codea;\
+int _resb = codeb;\
+if ((_resa) == (_resb)){ printf("success: %s == %s\n", #codea, #codeb); }\
+else { printf("failed: %s == %s : %d, %d\n", #codea, #codeb, _resa, _resb); exit(1); }
 
 int main (){
 
@@ -40,6 +42,24 @@ int main (){
     set_mint(0xff, 1, 0, num);
     trim_mint(num);
     test(size_mint(num) == 1);
+    free_mint(num);
+  }  
+  
+  {
+    mint *num = make_mint_from_int(0x0f);
+    test(size_mint(num) == 1);
+    free_mint(num);
+  }
+  
+  {
+    mint *num = make_mint_from_int(0xff);
+    test(size_mint(num) == 2);
+    free_mint(num);
+  }
+  
+  {
+    mint *num = make_mint_from_int(0x0fff);
+    test(size_mint(num) == 2);
     free_mint(num);
   }
   
