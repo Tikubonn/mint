@@ -3,6 +3,14 @@ mint provide multiple length integer for C. becareful! this is not speedy and sa
 in this library, multiple length integer's structure is not separated sign and value that like as pure integer in C.
 you can use another library that more faster and safety if you want use this for your application :D
 
+```c
+mint *numa = make_mint_from_long(1111111111);
+mint *numb = make_mint_from_long(1234567890);
+mint *numc = mul_mint(numa, numb);
+mint *numd = div_mint(numc, numa);
+printf("%ld\n", cast_mint_to_long(numd)); // 1234567890
+```
+
 # API
 
 ## Manual Functions 
@@ -39,6 +47,7 @@ if you want to management mint by GC, those functions are useful.
 | `int is_lesser_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is lesser than second argument, otherwise `0`. | 
 | `int is_lesser_or_equal_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is lesser or equal than second argument, otherwise `0`. | 
 | `int is_unequal_mint (mint*, mint*)` | this function return a integer that is `1` if two arguments is not equal, otherwise `0`. | 
+| `void trim_mint (mint*)` | trim the empty cells of mint instance. this is used to some functions in this library. |
 
 ## Automatic Functions 
 those functions allocate memory automatically with `malloc`.  
