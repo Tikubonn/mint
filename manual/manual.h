@@ -23,3 +23,4 @@
 #include "src/is_lesser_mint.h"
 #include "src/is_lesser_or_equal_mint.h"
 #include "src/is_unequal_mint.h"
+#include "src/trim_mint.h"

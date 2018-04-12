@@ -14,6 +14,35 @@ else { printf("failed: %s == %s\n", #codea, #codeb); exit(1); }
 
 int main (){
 
+  /* test trim */
+  
+  {
+    mint *num = make_mint(4);
+    set_mint(0xff, 0, 0, num);
+    set_mint(0xff, 1, 0, num);
+    trim_mint(num);
+    test(size_mint(num) == 3);
+    free_mint(num);
+  }
+  
+  {
+    mint *num = make_mint(4);
+    set_mint(0xff, 0, 0, num);
+    set_mint(0x01, 1, 0, num);
+    trim_mint(num);
+    test(size_mint(num) == 2);
+    free_mint(num);
+  }  
+  
+  {
+    mint *num = make_mint(2);
+    set_mint(0xff, 0, 0, num);
+    set_mint(0xff, 1, 0, num);
+    trim_mint(num);
+    test(size_mint(num) == 1);
+    free_mint(num);
+  }
+  
   /* test copy */
 
   {
