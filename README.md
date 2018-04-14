@@ -40,13 +40,14 @@ if you want to management mint by GC, those functions are useful.
 | `void add_mint_manually (mint*, mint*, mint* output)` | this function write to second argument what is calculation result of `+` by first arguments. if second argument dose not have enough space, part of data will be missing. |
 | `void sub_mint_manually (mint*, mint*, mint* output)` | this function write to second argument what is calculation result of `-` by first arguments. if second argument dose not have enough space, part of data will be missing. |
 | `void mul_mint_manually (mint*, mint*, mint* output)` | this function write to second argument what is calculation result of `*` by first arguments. if second argument dose not have enough space, part of data will be missing. |
-| `void floor_mint_manually (mint *modinout, mint*, mint* divout)` | this function write to `modinout` and third argument what is calculation result of `division` by `modinout` and second argument. `modinout` use to input and output. so this function has a side effect. *becareful!* this function has not suported calculation by negative number. | 
+| `int floor_mint_manually (mint *modinout, mint*, mint *divout)` | this function write to `modinout` and third argument what is calculation result of `division` by `modinout` and second argument. `modinout` use to input and output. so this function has a side effect. this function will return an integer. if you tried dividing number by `0`, this cause the zero division exception then will return `non zero` integer immediately. if this function was success, this function return `0`. *becareful!* this function has not suported calculation by negative number. |
 | `int is_equal_mint (mint*, mint*)` | this function return a integer that is `1` if two arguments is equal, otherwise `0`. | 
 | `int is_greater_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is greater than second argument, otherwise `0`. | 
 | `int is_greater_or_equal_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is greater or equal than second argument, otherwise `0`. | 
 | `int is_lesser_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is lesser than second argument, otherwise `0`. | 
 | `int is_lesser_or_equal_mint (mint*, mint*)` | this function return a integer that is `1` if first argument is lesser or equal than second argument, otherwise `0`. | 
 | `int is_unequal_mint (mint*, mint*)` | this function return a integer that is `1` if two arguments is not equal, otherwise `0`. | 
+| `int is_zero_mint (mint*)` | this function return a integer that is `1` if argument is `0`, otherwise `0`. |
 | `void trim_mint (mint*)` | trim the empty cells of mint instance. this is used to some functions in this library. |
 
 ## Automatic Functions 
@@ -67,9 +68,9 @@ those functions allocate memory automatically with `malloc`.
 | `mint *add_mint (mint*, mint*)` | return a calculation result of `+` as new instance. |
 | `mint *sub_mint (mint*, mint*)` | return a calculation result of `-` as new instance. |
 | `mint *mul_mint (mint*, mint*)` | return a calculation result of `*` as new instance. |
-| `void floor_mint (mint*, mint*, mint** outdiv, mint** outmod)` | set argument of `divout` and `modout` what is calculation result of `division`. *becareful!* this function has not supported calculation by negative number. |
-| `mint *div_mint (mint*, mint*)` | return a calculation result of `/` as new instance.  |
-| `mint *mod_mint (mint*, mint*)` | return a calculation result of `%` as new instance.  |
+| `void floor_mint (mint*, mint*, mint** outdiv, mint** outmod)` | set argument of `divout` and `modout` what is calculation result of `division`. if you tried dividing number by `0`, this cause the zero division exception then will return `non zero` integer immediately. if this function was success, this function return `0`. *becareful!* this function has not supported calculation by negative number. |
+| `mint *div_mint (mint*, mint*)` | return a calculation result of `/` as new instance. if second argument is 0, this function cause zero division exception then return the `NULL` immediately. |
+| `mint *mod_mint (mint*, mint*)` | return a calculation result of `%` as new instance. if second argument is 0, this function cause zero division exception then return the `NULL` immediately. |
 
 # Licence
 this library released under the MIT Licence.
