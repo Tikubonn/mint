@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "manual/manual.h"
-#include "auto/auto.h"
-#include "debug/debug.h"
+#include <mint.h>
 
 #define test(code)\
 if (code){ printf("success: %s\n", #code); }\
@@ -16,6 +14,18 @@ else { printf("failed: %s == %s : %d, %d\n", #codea, #codeb, _resa, _resb); exit
 
 int main (){
 
+  /* test print */
+  
+  {
+    mint *numa = make_mint_from_int(25252828);
+    mint *numb = make_mint_from_int(25252828);
+    mint *numc = mul_mint(numa, numb);
+    print_mint_ln(numc, stdout);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
   /* test trim */
   
   {
@@ -300,8 +310,42 @@ int main (){
     free_mint(numb);
     free_mint(numc);
   }
+	
+	/* zero division error */
+
+  {
+    mint *numa = make_mint_from_int(256);
+    mint *numb = make_mint_from_int(0);
+    mint *numc = div_mint(numa, numb);
+		test(numc == NULL);
+    free_mint(numa);
+    free_mint(numb);
+  }
+	
+  {
+    mint *numa = make_mint_from_int(256);
+    mint *numb = make_mint_from_int(0);
+    mint *numc = mod_mint(numa, numb);
+		test(numc == NULL);
+    free_mint(numa);
+    free_mint(numb);
+  }
   
-  /* test positive? */
+	/* test 0= */
+	
+	{
+		mint *num = make_mint_from_int(0);
+		test2(is_zero_mint(num), 0 == 0);
+		free_mint(num);
+	}
+	
+	{
+		mint *num = make_mint_from_int(1);
+		test2(is_zero_mint(num), 1 == 0);
+		free_mint(num);
+	}
+	
+	/* test positive? */
   
   {
     mint *num = make_mint_from_int(0);
@@ -340,7 +384,7 @@ int main (){
     test2(is_negative_mint(num), -1 < 0);
     free_mint(num);
   }
-  
+	
   /* test = */
   
   {
