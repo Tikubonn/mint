@@ -40,7 +40,7 @@ static void floor_mint_manually_add (unsigned long index, unsigned int seek, min
   set_mint(numcout | 1u, index, seek, numout);
 }
 
-void floor_mint_manually (mint *numinmod, mint *numin, mint *numdiv){
+static void floor_mint_manually_in (mint *numinmod, mint *numin, mint *numdiv){
   unsigned long size = size_mint(numinmod);
   while (size--){
     unsigned int seek = 8;
@@ -53,4 +53,11 @@ void floor_mint_manually (mint *numinmod, mint *numin, mint *numdiv){
   }
   trim_mint(numinmod);
   trim_mint(numdiv);
+}
+
+int floor_mint_manually (mint *numinmod, mint *numin, mint *numdiv){
+	if (is_zero_mint(numin))
+		return 1; // zero division exception!
+	floor_mint_manually_in(numinmod, numin, numdiv);
+	return 0;
 }
