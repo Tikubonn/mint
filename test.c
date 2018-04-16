@@ -525,5 +525,137 @@ int main (){
     free_mint(numb);
   }
   
+  /* tmp + */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = add_mint(numa, numb);
+    add_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  /* tmp - */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = sub_mint(numa, numb);
+    sub_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  /* tmp * */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = mul_mint(numa, numb);
+    mul_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  /* tmp floor */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc;
+    mint *numd;
+    floor_mint(numa, numb, &numc, &numd);
+    floor_tmp_mint(nume, numf, numa, numb);
+    test(is_equal_mint(numc, nume));
+    test(is_equal_mint(numd, numf));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+    free_mint(numd);
+  }
+  
+  /* tmp / */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = div_mint(numa, numb);
+    div_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);    
+  }
+  
+  /* tmp % */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = mod_mint(numa, numb);
+    mod_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);    
+  }
+  
+  /* tmp & */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = and_mint(numa, numb);
+    and_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);    
+  }
+  
+  /* tmp | */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = or_mint(numa, numb);
+    or_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);    
+  }
+  
+  /* tmp ^ */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = make_mint_from_int(2525);
+    mint *numc = xor_mint(numa, numb);
+    xor_tmp_mint(numd, numa, numb);
+    test(is_equal_mint(numc, numd));
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);    
+  }
+  
+  /* tmp ~ */
+  
+  {
+    mint *numa = make_mint_from_int(2828);
+    mint *numb = not_mint(numa);
+    not_tmp_mint(numc, numa);
+    test(is_equal_mint(numb, numc));
+    free_mint(numa);
+    free_mint(numb);
+  }
+  
   return 0;
 }
