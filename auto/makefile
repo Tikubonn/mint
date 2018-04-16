@@ -1,6 +1,5 @@
 
 all:
-	make auto.dll
 	make auto.lib
 
 clean:
@@ -17,9 +16,6 @@ clean:
 	rm -f compiled/floor_mint.o
 	rm -f compiled/div_mint.o
 	rm -f compiled/mod_mint.o
-
-auto.dll: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o 
-	$(CC) $(CFLAGS) -shared compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o $(ROOTDIR)/manual/manual.dll -o auto.dll
 
 auto.lib: compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o
 	ar r auto.lib compiled/make_mint.o compiled/free_mint.o compiled/copy_mint.o compiled/not_mint.o compiled/and_mint.o compiled/or_mint.o compiled/xor_mint.o compiled/add_mint.o compiled/sub_mint.o compiled/mul_mint.o compiled/floor_mint.o compiled/div_mint.o compiled/mod_mint.o
