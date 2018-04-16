@@ -18,6 +18,23 @@ those functions does not allocate memory automatically.
 so you should prepare working memory yourself. 
 for example if calculate the multiplication, you should allocate a memory space that size is double.
 if you want to management mint by GC, those functions are useful.
+but normally [Automatic Functions](#automatic-functions) are easier to use than those.
+
+```c
+mint_cell num1data[4];
+mint num1;
+mint_cell num2data[4];
+mint num2;
+mint_cell num3data[4 + 1];
+mint num3;
+init_mint(num1data, sizeof(num1data) / sizeof(mint_cell), &num1);
+init_mint(num2data, sizeof(num2data) / sizeof(mint_cell), &num2);
+init_mint(num3data, sizeof(num3data) / sizeof(mint_cell), &num3);
+load_mint_from_int(2525, &num1);
+load_mint_from_int(2828, &num2);
+add_mint_manually(&num1, &num2, &num3);
+return cast_mint_to_int(&num3); // 5353
+```
 
 | Function | Description | 
 ---- | ----
@@ -92,7 +109,7 @@ but those function has possibility that cause segmentation error when not enough
 make_tmp_mint_from_int(num1, 2525);
 make_tmp_mint_from_int(num2, 2828);
 add_tmp_mint_from_int(num3, num1, num2);
-mint *numexp = copy_mint(num3); // if you want to keep calculation result after exit from current stack frame, you should copy with automatic or manual function .
+mint *numexp = copy_mint(num3); // if you want to keep calculation result after exit from current stack frame, you should copy with automatic or manual function.
 return numexp;
 ```
 
