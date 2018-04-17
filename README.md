@@ -73,8 +73,8 @@ but this library does not have GC, so you should release manually the unnecessar
 if you want to make a temporary instance, you can use [Temporary Macros](#temporary-macros).
 
 ```c
-mint *num1 = make_mint(2525);
-mint *num2 = make_mint(2828);
+mint *num1 = make_mint_from_int(2525);
+mint *num2 = make_mint_from_int(2828);
 mint *num3 = add_mint(num1, num2);
 free_mint(num1); // release manually
 free_mint(num2); // release manually
