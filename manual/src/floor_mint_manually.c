@@ -4,6 +4,8 @@
 static inline int floor_mint_manually_dividable (mint *numa, unsigned long offset, unsigned int seek, mint *numb){
   unsigned long sizea = size_mint(numa);
   unsigned long sizeb = size_mint(numb);
+  // unsigned long sizea = real_size_mint(numa);
+  // unsigned long sizeb = real_size_mint(numb);
   unsigned long size = max(sizea, sizeb);
   while (size--){
     mint_cell numca = get_mint(size, 0, numa);
@@ -23,7 +25,8 @@ static inline void floor_mint_manually_sub (mint *numin, unsigned long offset, u
   // unsigned long sizea = size_mint(numin);
   // unsigned long sizeb = size_mint(numout);
   // unsigned long size = max(sizea, sizeb);
-  unsigned long size = size_mint(numout);
+  // unsigned long size = size_mint(numout);
+  unsigned long size = real_size_mint(numout);
   int car = 0;
   unsigned long index;
   for (index = 0; index < size; index++){
@@ -41,7 +44,8 @@ static void floor_mint_manually_add (unsigned long index, unsigned int seek, min
 }
 
 static void floor_mint_manually_in (mint *numinmod, mint *numin, mint *numdiv){
-  unsigned long size = size_mint(numinmod);
+  // unsigned long size = size_mint(numinmod);
+  unsigned long size = real_size_mint(numinmod);
   while (size--){
     unsigned int seek = 8;
     while (seek--){

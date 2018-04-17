@@ -2,7 +2,8 @@
 #define max(a, b) (a)<(b)?(b):(a)
 
 void sub_mint_manually (mint *numa, mint *numb, mint *numout){
-  unsigned long size = size_mint(numout);
+  // unsigned long size = size_mint(numout);
+  unsigned long size = real_size_mint(numout);
   int car = 0;
   unsigned long index;
   for (index = 0; index < size; index++){

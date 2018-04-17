@@ -4,7 +4,7 @@
 void set_mint (mint_cell numc, unsigned long index, unsigned int seek, mint *numin){
   unsigned int seeka = seek;
   unsigned int seekb = 8 - seek;
-  unsigned long size = size_mint(numin);
+  unsigned long size = real_size_mint(numin);
   if (index < size){
     numin->address_beginning[index] &= ~(0xff << seeka);
     numin->address_beginning[index] |= numc << seeka;
