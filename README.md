@@ -41,7 +41,8 @@ return cast_mint_to_int(&num3); // 5353
 | `void init_mint (mint_cell*, unsigned long, *numin)` | construct a mint structure from arguments. | 
 | `void set_mint (mint_cell, unsigned long, unsigned int, mint*)` | set a value to inner of range of mint structure. | 
 | `mint_cell get_mint (unsigned long, unsigned int, mint*)` | get a cell value from mint structure. if you accessed out of range, this function return a filled integer by `0` or `1`. | 
-| `unsigned long size_mint (mint*)` | return a size of cell array. | 
+| `unsigned long size_mint (mint*)` | return a size of cell array. that is lesser or equal than result of `real_size_mint`. | 
+| `unsigned long real_size_mint (mint*)` | return a allocated size of cell array. | 
 | `void clear_mint (mint*)` | fill the zero to all cell. | 
 | `void copy_mint_manually (mint*, mint*)` | copy a cell sequence contents to second argument. if second argument dont have enough space, piece of data will be missing. | 
 | `void load_mint_from_int (int, mint*)` | load a value to second argument from integer value. second argument size should be over the size of int. | 
