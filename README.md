@@ -108,7 +108,7 @@ but those function has possibility that cause segmentation error when not enough
 ```c
 make_tmp_mint_from_int(num1, 2525);
 make_tmp_mint_from_int(num2, 2828);
-add_tmp_mint_from_int(num3, num1, num2);
+add_tmp_mint(num3, num1, num2);
 mint *numexp = copy_mint(num3); // if you want to keep calculation result after exit from current stack frame, you should copy with automatic or manual function.
 return numexp;
 ```
