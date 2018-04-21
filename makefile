@@ -17,18 +17,18 @@ clean:
 	
 tmp = $(shell mktemp -d)
 	
-dist/mint.dll: auto/auto.lib manual/manual.dll debug/debug.lib 
+dist/mint.dll: auto/auto.lib manual/manual.lib debug/debug.lib 
 	cd $(tmp) && \
-ar x $(ROOTDIR)/auto/auto.lib && \
-ar x $(ROOTDIR)/manual/manual.lib && \
-ar x $(ROOTDIR)/debug/debug.lib && \
+ar xv $(ROOTDIR)/auto/auto.lib && \
+ar xv $(ROOTDIR)/manual/manual.lib && \
+ar xv $(ROOTDIR)/debug/debug.lib && \
 $(CC) $(CFLAGS) -shared *.o -o $(ROOTDIR)/dist/mint.dll
 	
-dist/mint.lib: auto/auto.lib manual/manual.dll debug/debug.lib 
+dist/mint.lib: auto/auto.lib manual/manual.lib debug/debug.lib 
 	cd $(tmp) && \
-ar x $(ROOTDIR)/auto/auto.lib && \
-ar x $(ROOTDIR)/manual/manual.lib && \
-ar x $(ROOTDIR)/debug/debug.lib && \
+ar xv $(ROOTDIR)/auto/auto.lib && \
+ar xv $(ROOTDIR)/manual/manual.lib && \
+ar xv $(ROOTDIR)/debug/debug.lib && \
 ar r $(ROOTDIR)/dist/mint.lib *.o
 
 test.exe: test.c dist/mint.lib
