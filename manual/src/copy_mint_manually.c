@@ -7,4 +7,5 @@ void copy_mint_manually (mint *numin, mint *numout){
     mint_cell numc = get_mint(index, 0, numin);
     set_mint(numc, index, 0, numout);
   }
+  trim_mint(numout);
 }
