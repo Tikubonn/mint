@@ -2,8 +2,10 @@
 #define max(a, b) (a)<(b)?(b):(a)
 
 int is_lesser_mint_in (mint *numa, mint *numb){
-  unsigned long sizea = size_mint(numa);
-  unsigned long sizeb = size_mint(numb);
+  // unsigned long sizea = size_mint(numa);
+  // unsigned long sizeb = size_mint(numb);
+  unsigned long sizea = real_size_mint(numa);
+  unsigned long sizeb = real_size_mint(numb);
   unsigned long count = max(sizea, sizeb);
   while (count--){
     mint_cell numca = get_mint(count, 0, numa);

@@ -2,7 +2,7 @@
 #define max(a, b) (a)<(b)?(b):(a)
 
 int is_unequal_mint (mint *numa, mint *numb){
-  unsigned long sizea = size_mint(numa);
+  /* unsigned long sizea = size_mint(numa);
   unsigned long sizeb = size_mint(numb);
   unsigned long size = max(sizea, sizeb);
   unsigned long index;
@@ -12,5 +12,6 @@ int is_unequal_mint (mint *numa, mint *numb){
     if (numca != numcb)
       return 1;
   }
-  return 0;
+  return 0; */
+  return !is_equal_mint(numa, numb);
 }
