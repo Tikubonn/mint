@@ -29,9 +29,12 @@ clean:
 	rm -f compiled/is_unequal_mint.o
 	rm -f compiled/trim_mint.o
 	rm -f compiled/is_zero_mint.o
+	rm -f compiled/shift_size_mint.o
+	rm -f compiled/lshift_mint_manually.o
+	rm -f compiled/rshift_mint_manually.o
 	
-manual.lib: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o compiled/cast_mint.o compiled/is_equal_mint.o compiled/is_greater_mint.o compiled/is_greater_or_equal_mint.o compiled/is_lesser_mint.o compiled/is_lesser_or_equal_mint.o compiled/is_unequal_mint.o compiled/trim_mint.o compiled/is_zero_mint.o
-	ar r manual.lib compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o compiled/cast_mint.o compiled/is_equal_mint.o compiled/is_greater_mint.o compiled/is_greater_or_equal_mint.o compiled/is_lesser_mint.o compiled/is_lesser_or_equal_mint.o compiled/is_unequal_mint.o compiled/trim_mint.o compiled/is_zero_mint.o
+manual.lib: compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o compiled/cast_mint.o compiled/is_equal_mint.o compiled/is_greater_mint.o compiled/is_greater_or_equal_mint.o compiled/is_lesser_mint.o compiled/is_lesser_or_equal_mint.o compiled/is_unequal_mint.o compiled/trim_mint.o compiled/is_zero_mint.o compiled/shift_size_mint.o compiled/lshift_mint_manually.o compiled/rshift_mint_manually.o
+	ar r manual.lib compiled/init_mint.o compiled/clear_mint.o compiled/size_mint.o compiled/get_mint.o compiled/set_mint.o compiled/load_mint.o compiled/copy_mint_manually.o compiled/not_mint_manually.o compiled/and_mint_manually.o compiled/or_mint_manually.o compiled/xor_mint_manually.o compiled/add_mint_manually.o compiled/sub_mint_manually.o compiled/mul_mint_manually.o compiled/floor_mint_manually.o compiled/is_positive_mint.o compiled/is_negative_mint.o compiled/cast_mint.o compiled/is_equal_mint.o compiled/is_greater_mint.o compiled/is_greater_or_equal_mint.o compiled/is_lesser_mint.o compiled/is_lesser_or_equal_mint.o compiled/is_unequal_mint.o compiled/trim_mint.o compiled/is_zero_mint.o compiled/shift_size_mint.o compiled/lshift_mint_manually.o compiled/rshift_mint_manually.o
 
 compiled/init_mint.o: src/init_mint.c
 	$(CC) $(CFLAGS) -c src/init_mint.c -o compiled/init_mint.o
@@ -110,3 +113,12 @@ compiled/trim_mint.o: src/trim_mint.c
 
 compiled/is_zero_mint.o: src/is_zero_mint.c
 	$(CC) $(CFLAGS) -c src/is_zero_mint.c -o compiled/is_zero_mint.o
+
+compiled/shift_size_mint.o: src/shift_size_mint.c
+	$(CC) $(CFLAGS) -c src/shift_size_mint.c -o compiled/shift_size_mint.o
+
+compiled/lshift_mint_manually.o: src/lshift_mint_manually.c
+	$(CC) $(CFLAGS) -c src/lshift_mint_manually.c -o compiled/lshift_mint_manually.o
+
+compiled/rshift_mint_manually.o: src/rshift_mint_manually.c
+	$(CC) $(CFLAGS) -c src/rshift_mint_manually.c -o compiled/rshift_mint_manually.o

@@ -25,3 +25,6 @@
 #include "src/is_unequal_mint.h"
 #include "src/trim_mint.h"
 #include "src/is_zero_mint.h"
+#include "src/shift_size_mint.h"
+#include "src/lshift_mint_manually.h"
+#include "src/rshift_mint_manually.h"
