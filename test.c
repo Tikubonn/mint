@@ -10,7 +10,7 @@ else { printf("failed: %s\n", #code); exit(1); }
 int _resa = codea;\
 int _resb = codeb;\
 if ((_resa) == (_resb)){ printf("success: %s == %s\n", #codea, #codeb); }\
-else { printf("failed: %s == %s : %d, %d\n", #codea, #codeb, _resa, _resb); exit(1); }
+else { printf("failed: %s == %s : %d(%x), %d(%x)\n", #codea, #codeb, _resa, _resa, _resb, _resb); exit(1); }
 
 int main (){
 
@@ -191,6 +191,65 @@ int main (){
     test2(inumb, ~-1);
     free_mint(numa);
     free_mint(numb);
+  }
+  
+  /* test lshift */
+  
+  {
+    mint *numa = make_mint_from_int(0xffff);
+    mint *numb = make_mint_from_int(4);
+    mint *numc = lshift_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 0xffff0);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  {
+    mint *numa = make_mint_from_int(0xffff);
+    mint *numb = make_mint_from_int(8);
+    mint *numc = lshift_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 0xffff00);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  /* test rshift */
+  
+  {
+    mint *numa = make_mint_from_int(0xffff);
+    mint *numb = make_mint_from_int(4);
+    mint *numc = rshift_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 0xfff);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  {
+    mint *numa = make_mint_from_int(0xffff);
+    mint *numb = make_mint_from_int(8);
+    mint *numc = rshift_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, 0xff);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
+  }
+  
+  {
+    mint *numa = make_mint_from_int(~0);
+    mint *numb = make_mint_from_int(8);
+    mint *numc = rshift_mint(numa, numb);
+    int inumc = cast_mint_to_int(numc);
+    test2(inumc, ~0);
+    free_mint(numa);
+    free_mint(numb);
+    free_mint(numc);
   }
 
   /* test add */
@@ -523,6 +582,50 @@ int main (){
     test2(is_greater_or_equal_mint(numa, numb), 11 >= 10);
     free_mint(numa);
     free_mint(numb);
+  }
+  
+  /* tmp lshift */
+  
+  {
+    make_tmp_mint_from_int(numa, 0xffff);
+    make_tmp_mint_from_int(numb, 4);
+    lshift_tmp_mint(numc, numa, numb);
+    int inum = cast_mint_to_int(numc);
+    test2(inum, 0xffff0);
+  }
+  
+  {
+    make_tmp_mint_from_int(numa, 0xffff);
+    make_tmp_mint_from_int(numb, 8);
+    lshift_tmp_mint(numc, numa, numb);
+    int inum = cast_mint_to_int(numc);
+    test2(inum, 0xffff00);
+  }
+  
+  /* tmp rshift */
+  
+  {
+    make_tmp_mint_from_int(numa, 0xffff);
+    make_tmp_mint_from_int(numb, 4);
+    rshift_tmp_mint(numc, numa, numb);
+    int inum = cast_mint_to_int(numc);
+    test2(inum, 0xfff);
+  }
+  
+  {
+    make_tmp_mint_from_int(numa, 0xffff);
+    make_tmp_mint_from_int(numb, 8);
+    rshift_tmp_mint(numc, numa, numb);
+    int inum = cast_mint_to_int(numc);
+    test2(inum, 0xff);
+  }
+  
+  {
+    make_tmp_mint_from_int(numa, ~0);
+    make_tmp_mint_from_int(numb, 8);
+    rshift_tmp_mint(numc, numa, numb);
+    int inum = cast_mint_to_int(numc);
+    test2(inum, ~0);
   }
   
   /* tmp + */
