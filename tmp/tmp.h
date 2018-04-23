@@ -11,3 +11,5 @@
 #include "src/floor_tmp_mint.h"
 #include "src/div_tmp_mint.h"
 #include "src/mod_tmp_mint.h"
+#include "src/lshift_tmp_mint.h"
+#include "src/rshift_tmp_mint.h"
