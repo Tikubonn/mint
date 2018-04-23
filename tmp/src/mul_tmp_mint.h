@@ -5,8 +5,8 @@
 mint *__ ## var ## _mul_argument1 = numa;\
 mint *__ ## var ## _mul_argument2 = numb;\
 make_tmp_mint(var,\
-size_mint(numa)+\
-size_mint(numb)+1);\
+size_mint(__ ## var ## _mul_argument1)+\
+size_mint(__ ## var ## _mul_argument2)+1);\
 mul_mint_manually(\
 __ ## var ## _mul_argument1,\
 __ ## var ## _mul_argument2, var);
