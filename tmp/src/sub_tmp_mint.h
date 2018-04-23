@@ -1,7 +1,7 @@
 #pragma once
 #include <mint.h>
 
-#define sub_tmp_mint_max(a,b) 
+#define sub_tmp_mint_max(a,b) ((a)<(b)?(b):(a))
 #define sub_tmp_mint(var, numa, numb)\
 mint *__ ## var ## _sub_argument1 = numa;\
 mint *__ ## var ## _sub_argument2 = numb;\
