@@ -12,3 +12,6 @@
 #include "src/floor_mint.h"
 #include "src/div_mint.h"
 #include "src/mod_mint.h"
+#include "src/lshift_mint.h"
+#include "src/rshift_mint.h"
+
