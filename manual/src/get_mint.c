@@ -1,5 +1,4 @@
 #include <mint.h>
-#include "size_mint.h"
 #define is_negative(a) (a & 0b10000000)
 
 mint_cell get_mint (unsigned long index, unsigned int seek, mint *numin){
