@@ -33,7 +33,7 @@ int main (){
     set_mint(0xff, 0, 0, num);
     set_mint(0xff, 1, 0, num);
     trim_mint(num);
-    test(size_mint(num) == 3);
+    test2(size_mint(num), 3);
     free_mint(num);
   }
   
@@ -42,7 +42,7 @@ int main (){
     set_mint(0xff, 0, 0, num);
     set_mint(0x01, 1, 0, num);
     trim_mint(num);
-    test(size_mint(num) == 2);
+    test2(size_mint(num), 2);
     free_mint(num);
   }  
   
@@ -51,7 +51,7 @@ int main (){
     set_mint(0xff, 0, 0, num);
     set_mint(0xff, 1, 0, num);
     trim_mint(num);
-    test(size_mint(num) == 1);
+    test2(size_mint(num), 1);
     free_mint(num);
   }  
   
