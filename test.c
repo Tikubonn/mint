@@ -628,50 +628,6 @@ int main (){
     test2(inum, ~0);
   } 
   
-  /* tmp log lshift */
-  
-  {
-    make_tmp_mint_from_int(numa, 0xffff);
-    make_tmp_mint_from_int(numb, 4);
-    logical_lshift_tmp_mint(numc, numa, numb);
-    int inum = cast_mint_to_int(numc);
-    test2(inum, 0xffff0);
-  }
-  
-  {
-    make_tmp_mint_from_int(numa, 0xffff);
-    make_tmp_mint_from_int(numb, 8);
-    logical_lshift_tmp_mint(numc, numa, numb);
-    int inum = cast_mint_to_int(numc);
-    test2(inum, 0xffff00);
-  }
-  
-  /* tmp log rshift */
-  
-  {
-    make_tmp_mint_from_int(numa, 0xffff);
-    make_tmp_mint_from_int(numb, 4);
-    rshift_tmp_mint(numc, numa, numb);
-    int inum = cast_mint_to_int(numc);
-    test2(inum, 0xfff);
-  }
-  
-  {
-    make_tmp_mint_from_int(numa, 0xffff);
-    make_tmp_mint_from_int(numb, 8);
-    logical_rshift_tmp_mint(numc, numa, numb);
-    int inum = cast_mint_to_int(numc);
-    test2(inum, 0xff);
-  }
-  
-  {
-    make_tmp_mint_from_int(numa, ~0);
-    make_tmp_mint_from_int(numb, 8);
-    logical_rshift_tmp_mint(numc, numa, numb);
-    int inum = cast_mint_to_int(numc);
-    test2(inum, (~0u) >> 8);
-  }
-  
   /* tmp + */
   
   {
