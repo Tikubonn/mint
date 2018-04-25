@@ -38,11 +38,11 @@ return cast_mint_to_int(&num3); // 5353
 
 | Function | Description | 
 ---- | ----
-| `void init_mint (mint_cell*, unsigned long, *numin)` | construct a mint structure from arguments. | 
-| `void set_mint (mint_cell, unsigned long, unsigned int, mint*)` | set a value to inner of range of mint structure. | 
-| `mint_cell get_mint (unsigned long, unsigned int, mint*)` | get a cell value from mint structure. if you accessed out of range, this function return a filled integer by `0` or `1`. | 
-| `unsigned long size_mint (mint*)` | return a size of cell array. that is lesser or equal than result of `real_size_mint`. | 
-| `unsigned long real_size_mint (mint*)` | return a allocated size of cell array. | 
+| `void init_mint (mint_cell*, size_t, *numin)` | construct a mint structure from arguments. | 
+| `void set_mint (mint_cell, size_t, size_t, mint*)` | set a value to inner of range of mint structure. | 
+| `mint_cell get_mint (size_t, size_t, mint*)` | get a cell value from mint structure. if you accessed out of range, this function return a filled integer by `0` or `1`. | 
+| `size_t size_mint (mint*)` | return a size of cell array. that is lesser or equal than result of `real_size_mint`. | 
+| `size_t real_size_mint (mint*)` | return a allocated size of cell array. | 
 | `void clear_mint (mint*)` | fill the zero to all cell. | 
 | `void copy_mint_manually (mint*, mint*)` | copy a cell sequence contents to second argument. if second argument dont have enough space, piece of data will be missing. | 
 | `void load_mint_from_int (int, mint*)` | load a value to second argument from integer value. second argument size should be over the size of int. | 
@@ -59,8 +59,8 @@ return cast_mint_to_int(&num3); // 5353
 | `void sub_mint_manually (mint*, mint*, mint* output)` | write to second argument what is calculation result of `-` by first arguments. if second argument dose not have enough space, part of data will be missing. |
 | `void mul_mint_manually (mint*, mint*, mint* output)` | write to second argument what is calculation result of `*` by first arguments. if second argument dose not have enough space, part of data will be missing. |
 | `int floor_mint_manually (mint *modinout, mint*, mint *divout)` | write to `modinout` and third argument what is calculation result of `division` by `modinout` and second argument. `modinout` use to input and output. so this function has a side effect. this function will return an integer. if you tried dividing number by `0`, this cause the zero division exception then will return `non zero` integer immediately. if this function was success, this function return `0`. *becareful!* this function has not suported calculation by negative number. |
-| `unsigned long offset_size_mint (mint*)` | return a size of offset that use to shift functions. |
-| `unsigned long seek_size_mint (mint*)` | return a size of bit offset that use to shift functions. |
+| `size_t offset_size_mint (mint*)` | return a size of offset that use to shift functions. |
+| `size_t seek_size_mint (mint*)` | return a size of bit offset that use to shift functions. |
 | `void lshift_mint_manually (mint*, mint *count, mint *output)` | write to `output` what is calculation result of arithmetic left shift by first argument and `count`. *becareful!* `count` has not supported negative number. |
 | `void rshift_mint_manually (mint*, mint *count, mint *output)` | write to `output` what is calculation result of arithmetic right shift by first argument and `count`. *becareful!* `count` has not supported negative number. |
 | `int is_equal_mint (mint*, mint*)` | return a integer that is `1` if two arguments is equal, otherwise `0`. | 
@@ -88,7 +88,7 @@ return num3;
 
 | Function | Description | 
 ---- | ----
-| `mint *make_mint (unsigned long size)` | make a new empty instance that size is argument of `size`. |
+| `mint *make_mint (size_t size)` | make a new empty instance that size is argument of `size`. |
 | `mint *make_mint_from_int (int)` | make a new instance from C integer. |
 | `mint *make_mint_from_long (long)` | make a new instance from C integer. |
 | `void free_mint (mint*)` | free a memory space that is used by instance. |
@@ -122,7 +122,7 @@ return numexp;
 
 | Macro | Description | 
 ---- | ---- 
-| `make_tmp_mint (var, unsigned long size)` | assign a new empty instance from stack frame to `var`. that length is argument of `size`. | 
+| `make_tmp_mint (var, size_t size)` | assign a new empty instance from stack frame to `var`. that length is argument of `size`. | 
 | `make_tmp_mint_from_int (var, int)` | assign a new instance from stack frame to `var`. that value is a second argument. | 
 | `make_tmp_mint_from_long (var, long)` | assign a new instance from stack frame to `var`. that value is a second argument. | 
 | `copy_tmp_mint (var, mint*)` | assign a new instance from stack frame to `var`. that is copied instance of  second argument. | 
