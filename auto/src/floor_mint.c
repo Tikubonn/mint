@@ -1,14 +1,9 @@
 #include <mint.h>
-
-/* extern void floor_mint (mint *numa, mint *numb, mint **numdiv, mint **nummod){
-  unsigned long size = size_mint(numa);
-  *numdiv = make_mint(size);
-  *nummod = copy_mint(numa);
-  floor_mint_manually(*nummod, numb, *numdiv);
-} */
+#include <stddef.h>
 
 extern int floor_mint (mint *numa, mint *numb, mint **numdiv, mint **nummod){
-	unsigned long size = size_mint(numa);
+	// unsigned long size = size_mint(numa);
+	size_t size = size_mint(numa);
 	mint *numd = make_mint(size);
 	mint *numm = copy_mint(numa);
 	if (floor_mint_manually(numm, numb, numd)){

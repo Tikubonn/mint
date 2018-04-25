@@ -1,3 +1,4 @@
+#pragma once
 #include <mint.h>
 
 extern void load_mint_from_int (int, mint*);

@@ -1,7 +1,7 @@
-#include <stdlib.h>
 #include <mint.h>
+#include <stdlib.h>
 
-mint *make_mint (unsigned long size){
+mint *make_mint (size_t size){
   mint_cell *numdata = malloc(sizeof(mint_cell) * size);
   mint *num = malloc(sizeof(mint));
   init_mint(numdata, sizeof(mint_cell) * size, num);

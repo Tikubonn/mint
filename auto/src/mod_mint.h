@@ -1,3 +1,4 @@
+#pragma once
 #include <mint.h>
 
-mint *mod_mint (mint*, mint*);
+extern mint *mod_mint (mint*, mint*);

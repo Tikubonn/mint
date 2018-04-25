@@ -1,3 +1,4 @@
+#pragma once
 #include <mint.h>
 
 extern int cast_mint_to_int (mint*);

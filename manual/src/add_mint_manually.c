@@ -1,9 +1,12 @@
 #include <mint.h>
+#include <stddef.h>
 #define max(a, b) (a)<(b)?(b):(a)
 
 void add_mint_manually (mint *numa, mint *numb, mint *numout){
-  unsigned long size = real_size_mint(numout);
-  unsigned long index;
+  // unsigned long size = real_size_mint(numout);
+  // unsigned long index;
+  size_t size = real_size_mint(numout);
+  size_t index;
   unsigned int car = 0;
   for (index = 0; index < size; index++){
     mint_cell numca = get_mint(index, 0, numa);  

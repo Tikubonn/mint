@@ -1,8 +1,9 @@
 #include <mint.h>
+#include <stddef.h>
 
 static void trim_mint_negative (mint *num){
-  // unsigned long count = size_mint(num);
-  unsigned long count = real_size_mint(num);
+  // unsigned long count = real_size_mint(num);
+  size_t count = real_size_mint(num);
   while (1 < count--){
     mint_cell numca = get_mint(count, 0, num);
     mint_cell numcb = get_mint(count -1, 0, num);
@@ -25,8 +26,8 @@ static void trim_mint_negative (mint *num){
 }
 
 static void trim_mint_positive (mint *num){
-  // unsigned long count = size_mint(num);
-  unsigned long count = real_size_mint(num);
+  // unsigned long count = real_size_mint(num);
+  size_t count = real_size_mint(num);
   while (1 < count--){
     mint_cell numca = get_mint(count, 0, num);
     mint_cell numcb = get_mint(count -1, 0, num);

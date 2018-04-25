@@ -1,14 +1,15 @@
 #pragma once
 #include <mint.h>
+#include <stddef.h>
 
 #define lshift_tmp_mint(var, numa, numb)\
 mint *__ ## var ## _lshift_argument1 = numa;\
 mint *__ ## var ## _lshift_argument2 = numb;\
-unsigned long __ ## var ## _lshift_seek =\
+size_t __ ## var ## _lshift_seek =\
 seek_size_mint(__ ## var ## _lshift_argument2);\
-unsigned long __ ## var ## _lshift_offset =\
+size_t __ ## var ## _lshift_offset =\
 offset_size_mint(__ ## var ## _lshift_argument2);\
-unsigned long __ ## var ## _lshift_size =\
+size_t __ ## var ## _lshift_size =\
 size_mint(__ ## var ## _lshift_argument1);\
 make_tmp_mint(var,\
 __ ## var ## _lshift_size +\
