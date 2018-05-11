@@ -11,12 +11,14 @@ mint *make_mint (size_t size){
 
 mint *make_mint_from_int (int num){
   mint *numout = make_mint(sizeof(int));
+	if (numout == NULL) return NULL;
   load_mint_from_int(num, numout);
   return numout;
 }
 
 mint *make_mint_from_long (long num){
   mint *numout = make_mint(sizeof(long));
+	if (numout == NULL) return NULL;
   load_mint_from_long(num, numout);
   return numout;
 }

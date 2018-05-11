@@ -6,6 +6,7 @@ mint *rshift_mint (mint *numa, mint *numb){
   size_t offset = offset_size_mint(numb);
   size_t size = size_mint(numa);
   mint *numout = make_mint(size - offset);
+	if (numout == NULL) return NULL;
   rshift_mint_manually(numa, numb, numout);
   return numout;
 }
