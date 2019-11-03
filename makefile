@@ -1,35 +1,38 @@
-export ROOTDIR = $(CURDIR)
-export CFLAGS = -I$(CURDIR) -L$(CURDIR) -fPIC
-export CC = gcc 
 
-all: 
-	make -C manual 
-	make -C auto
-	make -C debug
-	make dist/mint.dll
+export CFLAGS += -g
+export rootdir := $(CURDIR)
+
+all: .always
+	make h
+	make lib
+	make dll
+
+clean: .always
+	make clean -C src
+
+test: .always
+	make all
+	make test -C test
+
+h: .always
+	make h -C src
+	make dist/mint.h
+
+lib: .always
+	make lib -C src
 	make dist/mint.lib
-	make test.exe
 
-clean:
-	make clean -C manual
-	make clean -C auto
-	make clean -C debug
-	
-tmp = $(shell mktemp -d)
-	
-dist/mint.dll: auto/auto.lib manual/manual.lib debug/debug.lib 
-	cd $(tmp) && \
-ar xv $(ROOTDIR)/auto/auto.lib && \
-ar xv $(ROOTDIR)/manual/manual.lib && \
-ar xv $(ROOTDIR)/debug/debug.lib && \
-$(CC) $(CFLAGS) -shared *.o -o $(ROOTDIR)/dist/mint.dll
-	
-dist/mint.lib: auto/auto.lib manual/manual.lib debug/debug.lib 
-	cd $(tmp) && \
-ar xv $(ROOTDIR)/auto/auto.lib && \
-ar xv $(ROOTDIR)/manual/manual.lib && \
-ar xv $(ROOTDIR)/debug/debug.lib && \
-ar r $(ROOTDIR)/dist/mint.lib *.o
+dll: .always
+	make dll -C src
+	make dist/mint.dll
 
-test.exe: test.c dist/mint.lib
-	$(CC) $(CFLAGS) test.c dist/mint.lib -o test.exe
+dist/mint.h: src/mint.h
+	cp src/mint.h dist/mint.h
+
+dist/mint.lib: src/mint.lib
+	cp src/mint.lib dist/mint.lib
+
+dist/mint.dll: src/mint.dll
+	cp src/mint.dll dist/mint.dll
+
+.always:
