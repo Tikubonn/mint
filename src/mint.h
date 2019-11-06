@@ -1,12 +1,13 @@
 #pragma once
 #include <stdint.h>
+#include <stddef.h>
 
 typedef uint8_t mint_cell;
 
 typedef struct mint {
-  mint_cell *address;
-  mint_cell *address_beginning;
-  mint_cell *address_end;
+  mint_cell *sequence;
+	size_t seek;
+	size_t size;
 } mint;
 
 extern int cast_mint_to_int (mint*);
@@ -45,6 +46,9 @@ extern size_t mint_real_size (mint*);
 extern void set_mint (mint_cell, size_t, size_t, mint*);
 
 extern void trim_mint (mint*);
+#include <stddef.h>
+
+extern mint_cell get_absolute_mint (size_t, size_t, mint*);
 
 extern void add_mint_manually (mint*, mint*, mint*);
 
@@ -120,14 +124,18 @@ extern mint *sub_mint (mint*, mint*);
 extern void xor_mint_manually (mint*, mint*, mint*);
 
 extern mint *xor_mint (mint*, mint*);
+
+void minus_mint_manually (mint*, mint*);
+
+extern mint *minus_mint (mint*);
 #define add_mint_temporarily_max(a,b) ((a)<(b)?(b):(a))
 #define add_mint_temporarily(var, numa, numb)\
 mint *__ ## var ## _add_argument1 = numa;\
 mint *__ ## var ## _add_argument2 = numb;\
 make_mint_temporarily(var,\
 add_mint_temporarily_max(\
-size_mint(__ ## var ## _add_argument1),\
-size_mint(__ ## var ## _add_argument2)) +1);\
+mint_size(__ ## var ## _add_argument1),\
+mint_size(__ ## var ## _add_argument2)) +1);\
 add_mint_manually(\
 __ ## var ## _add_argument1,\
 __ ## var ## _add_argument2, var);
@@ -137,21 +145,21 @@ mint *__ ## var ## _and_argument1 = numa;\
 mint *__ ## var ## _and_argument2 = numb;\
 make_mint_temporarily(var,\
 and_mint_temporarily_max(\
-size_mint(__ ## var ## _and_argument1),\
-size_mint(__ ## var ## _and_argument2)));\
+mint_size(__ ## var ## _and_argument1),\
+mint_size(__ ## var ## _and_argument2)));\
 and_mint_manually(\
 __ ## var ## _and_argument1,\
 __ ## var ## _and_argument2, var);
 #define copy_mint_temporarily(var, num)\
 mint *__ ## var ## _copy_argument = num;\
-make_mint_temporarily(var, size_mint(__ ## var ## _copy_argument));\
+make_mint_temporarily(var, mint_size(__ ## var ## _copy_argument));\
 copy_mint_manually(__ ## var ## _copy_argument, var);
 #define div_mint_temporarily(var ,numa, numb)\
 floor_mint_temporarily(var, __ ## var ## __unused, numa, numb);
 #define floor_mint_temporarily(var1, var2, numa, numb)\
 mint *__ ## var1 ## _floor_argument1 = numa;\
 mint *__ ## var1 ## _floor_argument2 = numb;\
-make_mint_temporarily(var1, size_mint(__ ## var1 ## _floor_argument1));\
+make_mint_temporarily(var1, mint_size(__ ## var1 ## _floor_argument1));\
 copy_mint_temporarily(var2, __ ## var1 ## _floor_argument1);\
 floor_mint_manually(var2, __ ## var1 ## _floor_argument2, var1);
 #include <stddef.h>
@@ -160,11 +168,11 @@ floor_mint_manually(var2, __ ## var1 ## _floor_argument2, var1);
 mint *__ ## var ## _lshift_argument1 = numa;\
 mint *__ ## var ## _lshift_argument2 = numb;\
 size_t __ ## var ## _lshift_seek =\
-seek_size_mint(__ ## var ## _lshift_argument2);\
+mint_seek_size(__ ## var ## _lshift_argument2);\
 size_t __ ## var ## _lshift_offset =\
-offset_size_mint(__ ## var ## _lshift_argument2);\
+mint_offset_size(__ ## var ## _lshift_argument2);\
 size_t __ ## var ## _lshift_size =\
-size_mint(__ ## var ## _lshift_argument1);\
+mint_size(__ ## var ## _lshift_argument1);\
 make_mint_temporarily(var,\
 __ ## var ## _lshift_size +\
 __ ## var ## _lshift_offset +\
@@ -179,8 +187,7 @@ size_t __ ## var ## _size = size;\
 mint_cell __ ## var ## _data[__ ## var ## _size];\
 mint __ ## var;\
 mint *var = &__ ## var;\
-init_mint(__ ## var ## _data, __ ## var ## _size, var);\
-clear_mint(var);
+init_mint(__ ## var ## _data, __ ## var ## _size, var);
 
 #define make_mint_from_int_temporarily(var, num)\
 make_mint_temporarily(var, sizeof(int));\
@@ -195,14 +202,14 @@ floor_mint_temporarily(__ ## var ## _unused, var, numa, numb);
 mint *__ ## var ## _mul_argument1 = numa;\
 mint *__ ## var ## _mul_argument2 = numb;\
 make_mint_temporarily(var,\
-size_mint(__ ## var ## _mul_argument1)+\
-size_mint(__ ## var ## _mul_argument2)+1);\
+mint_size(__ ## var ## _mul_argument1)+\
+mint_size(__ ## var ## _mul_argument2)+1);\
 mul_mint_manually(\
 __ ## var ## _mul_argument1,\
 __ ## var ## _mul_argument2, var);
 #define not_mint_temporarily(var, num)\
 mint *__ ## var ## _not_argument = num;\
-make_mint_temporarily(var, size_mint(__ ## var ## _not_argument));\
+make_mint_temporarily(var, mint_size(__ ## var ## _not_argument));\
 not_mint_manually(__ ## var ## _not_argument, var);
 #define or_mint_temporarily_max(a,b) ((a)<(b)?(b):(a))
 #define or_mint_temporarily(var, numa, numb)\
@@ -210,25 +217,28 @@ mint *__ ## var ## _or_argument1 = numa;\
 mint *__ ## var ## _or_argument2 = numb;\
 make_mint_temporarily(var,\
 or_mint_temporarily_max(\
-size_mint(__ ## var ## _or_argument1),\
-size_mint(__ ## var ## _or_argument2)));\
+mint_size(__ ## var ## _or_argument1),\
+mint_size(__ ## var ## _or_argument2)));\
 or_mint_manually(\
 __ ## var ## _or_argument1,\
 __ ## var ## _or_argument2, var);
 #include <stddef.h>
 
+#define rshift_mint_temporarily_max(a, b)\
+((a)<(b)?(b):(a))
+
 #define rshift_mint_temporarily(var, numa, numb)\
 mint *__ ## var ## _rshift_argument1 = numa;\
 mint *__ ## var ## _rshift_argument2 = numb;\
-size_t __ ## var ## _rshift_seek =\
-seek_size_mint(__ ## var ## _rshift_argument2);\
 size_t __ ## var ## _rshift_offset =\
-offset_size_mint(__ ## var ## _rshift_argument2);\
+mint_offset_size(__ ## var ## _rshift_argument2);\
 size_t __ ## var ## _rshift_size =\
-size_mint(__ ## var ## _rshift_argument1);\
+mint_size(__ ## var ## _rshift_argument1);\
 make_mint_temporarily(var,\
-__ ## var ## _rshift_size +\
-__ ## var ## _rshift_offset);\
+rshift_mint_temporarily_max(\
+1,\
+__ ## var ## _rshift_size -\
+__ ## var ## _rshift_offset));\
 rshift_mint_manually(\
 __ ## var ## _rshift_argument1,\
 __ ## var ## _rshift_argument2, var);
@@ -238,8 +248,8 @@ mint *__ ## var ## _sub_argument1 = numa;\
 mint *__ ## var ## _sub_argument2 = numb;\
 make_mint_temporarily(var,\
 sub_mint_temporarily_max(\
-size_mint(__ ## var ## _sub_argument1),\
-size_mint(__ ## var ## _sub_argument2)) +1);\
+mint_size(__ ## var ## _sub_argument1),\
+mint_size(__ ## var ## _sub_argument2)) +1);\
 sub_mint_manually(\
 __ ## var ## _sub_argument1,\
 __ ## var ## _sub_argument2, var);
@@ -249,8 +259,12 @@ mint *__ ## var ## _xor_argument1 = numa;\
 mint *__ ## var ## _xor_argument2 = numb;\
 make_mint_temporarily(var,\
 xor_mint_temporarily_max(\
-size_mint(__ ## var ## _xor_argument1),\
-size_mint(__ ## var ## _xor_argument2)));\
+mint_size(__ ## var ## _xor_argument1),\
+mint_size(__ ## var ## _xor_argument2)));\
 xor_mint_manually(\
 __ ## var ## _xor_argument1,\
 __ ## var ## _xor_argument2, var);
+#define minus_mint_temporarily(var, num)\
+mint *__ ## var ## _minus_argument = num;\
+make_mint_temporarily(var, mint_size(__ ## var ## _minus_argument) +1);\
+minus_mint_manually(__ ## var ## _minus_argument, var);

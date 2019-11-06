@@ -2,16 +2,17 @@
 #include <stddef.h>
 
 /*
-  numout = sizeof numa - numb / 8 + 1
-  numb = 0 <= numb
+  result = sizeof number1 - number2 / 8 + 1
+  number2 = 0 <= number2
 */
 
-void rshift_mint_manually (mint *numa, mint *numb, mint *numout){
-  size_t seek = mint_seek_size(numb);
-  size_t offset = mint_offset_size(numb);
-  size_t size = mint_real_size(numout);
+void rshift_mint_manually (mint *number1, mint *number2, mint *result){
+  size_t seek = mint_seek_size(number2);
+  size_t offset = mint_offset_size(number2);
+  size_t size = mint_real_size(result);
   for (size_t index = 0; index < size; index++){
-    mint_cell numc = get_mint(index + offset, seek, numa);
-    set_mint(numc, index, 0, numout);
+    mint_cell value = get_mint(index + offset, seek, number1);
+    set_mint(value, index, 0, result);
   }
+	trim_mint(result);
 }

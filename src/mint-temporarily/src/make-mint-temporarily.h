@@ -5,8 +5,7 @@ size_t __ ## var ## _size = size;\
 mint_cell __ ## var ## _data[__ ## var ## _size];\
 mint __ ## var;\
 mint *var = &__ ## var;\
-init_mint(__ ## var ## _data, __ ## var ## _size, var);\
-clear_mint(var);
+init_mint(__ ## var ## _data, __ ## var ## _size, var);
 
 #define make_mint_from_int_temporarily(var, num)\
 make_mint_temporarily(var, sizeof(int));\

@@ -21,5 +21,7 @@ void test_mint (){
 	test(get_mint(1, 0, number) == 0);
 	test(get_mint(2, 0, number) == 0);
 	test(get_mint(3, 0, number) == 0);
+	trim_mint(number);
+	test(mint_size(number) <= 1);
 	free(number);
 }

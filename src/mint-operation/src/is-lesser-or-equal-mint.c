@@ -1,6 +1,6 @@
 #include <mint.h>
 #include <stdbool.h>
 
-bool is_lesser_or_equal_mint (mint *numa, mint *numb){
-  return is_greater_mint(numa, numb) == false;
+bool is_lesser_or_equal_mint (mint *number1, mint *number2){
+  return is_greater_mint(number1, number2) == false;
 }

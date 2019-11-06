@@ -1,7 +1,7 @@
 #include <mint.h>
 #include <stddef.h>
 
-static void mul_mint_manually_add (mint *numin, unsigned long offset, unsigned int seek, mint *numout){
+static void add (mint *numin, unsigned long offset, unsigned int seek, mint *numout){
   size_t size = mint_real_size(numout);
   unsigned int car = 0;
   for (size_t index = 0; index < size; index++){
@@ -13,15 +13,15 @@ static void mul_mint_manually_add (mint *numin, unsigned long offset, unsigned i
   }
 }
 
-void mul_mint_manually (mint *numa, mint *numb, mint *numout){
-  size_t size = mint_real_size(numout);
+void mul_mint_manually (mint *number1, mint *number2, mint *result){
+  size_t size = mint_real_size(result);
   for (size_t index = 0; index < size; index++){
-    mint_cell numc = get_mint(index, 0, numb);
+    mint_cell numc = get_mint(index, 0, number2);
     for (size_t seek = 0; seek < 8; seek++){
       if (numc & (1u << seek)){
-        mul_mint_manually_add(numa, index, seek, numout);
+        add(number1, index, seek, result);
       }
     }
   }
-  trim_mint(numout);
+  trim_mint(result);
 }

@@ -4,11 +4,11 @@
 mint *__ ## var ## _lshift_argument1 = numa;\
 mint *__ ## var ## _lshift_argument2 = numb;\
 size_t __ ## var ## _lshift_seek =\
-seek_size_mint(__ ## var ## _lshift_argument2);\
+mint_seek_size(__ ## var ## _lshift_argument2);\
 size_t __ ## var ## _lshift_offset =\
-offset_size_mint(__ ## var ## _lshift_argument2);\
+mint_offset_size(__ ## var ## _lshift_argument2);\
 size_t __ ## var ## _lshift_size =\
-size_mint(__ ## var ## _lshift_argument1);\
+mint_size(__ ## var ## _lshift_argument1);\
 make_mint_temporarily(var,\
 __ ## var ## _lshift_size +\
 __ ## var ## _lshift_offset +\

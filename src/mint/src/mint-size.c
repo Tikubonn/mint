@@ -5,14 +5,14 @@
   mint が使用しているメモリ量を返します。
 */
 
-size_t mint_size (mint *numin){
-  return (numin->address - numin->address_beginning) / sizeof(mint_cell);
+size_t mint_size (mint *number){
+  return number->seek;
 }
 
 /*
   mint が実際に確保しているメモリ量を返します。
 */
 
-size_t mint_real_size (mint *numin){
-  return (numin->address_end - numin->address_beginning) / sizeof(mint_cell);
+size_t mint_real_size (mint *number){
+	return number->size;
 }

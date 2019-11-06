@@ -4,57 +4,61 @@ default:
 clean:
 	rm -f mint.h
 	rm -f mint.lib
-	rm -f compiled/cast_mint.o
-	rm -f compiled/clear_mint.o
-	rm -f compiled/copy_mint.o
-	rm -f compiled/copy_mint_manually.o
-	rm -f compiled/free_mint.o
-	rm -f compiled/get_mint.o
-	rm -f compiled/init_mint.o
-	rm -f compiled/load_mint.o
-	rm -f compiled/make_mint.o
+	rm -f compiled/cast-mint.o
+	rm -f compiled/clear-mint.o
+	rm -f compiled/copy-mint.o
+	rm -f compiled/copy-mint-manually.o
+	rm -f compiled/free-mint.o
+	rm -f compiled/get-mint.o
+	rm -f compiled/init-mint.o
+	rm -f compiled/load-mint.o
+	rm -f compiled/make-mint.o
 	rm -f compiled/mint-size.o
-	rm -f compiled/set_mint.o
-	rm -f compiled/trim_mint.o
+	rm -f compiled/set-mint.o
+	rm -f compiled/trim-mint.o
+	rm -f compiled/get-absolute-mint.o
 
-mint.h: src/cast_mint.h src/clear_mint.h src/copy_mint.h src/copy_mint_manually.h src/free_mint.h src/get_mint.h src/init_mint.h src/load_mint.h src/make_mint.h src/mint-size.h src/set_mint.h src/trim_mint.h
-	cat src/cast_mint.h src/clear_mint.h src/copy_mint.h src/copy_mint_manually.h src/free_mint.h src/get_mint.h src/init_mint.h src/load_mint.h src/make_mint.h src/mint-size.h src/set_mint.h src/trim_mint.h > mint.h
+mint.h: src/cast-mint.h src/clear-mint.h src/copy-mint.h src/copy-mint-manually.h src/free-mint.h src/get-mint.h src/init-mint.h src/load-mint.h src/make-mint.h src/mint-size.h src/set-mint.h src/trim-mint.h src/get-absolute-mint.h
+	cat src/cast-mint.h src/clear-mint.h src/copy-mint.h src/copy-mint-manually.h src/free-mint.h src/get-mint.h src/init-mint.h src/load-mint.h src/make-mint.h src/mint-size.h src/set-mint.h src/trim-mint.h src/get-absolute-mint.h > mint.h
 
-mint.lib: compiled/cast_mint.o compiled/clear_mint.o compiled/copy_mint.o compiled/copy_mint_manually.o compiled/free_mint.o compiled/get_mint.o compiled/init_mint.o compiled/load_mint.o compiled/make_mint.o compiled/mint-size.o compiled/set_mint.o compiled/trim_mint.o
-	ar r mint.lib compiled/cast_mint.o compiled/clear_mint.o compiled/copy_mint.o compiled/copy_mint_manually.o compiled/free_mint.o compiled/get_mint.o compiled/init_mint.o compiled/load_mint.o compiled/make_mint.o compiled/mint-size.o compiled/set_mint.o compiled/trim_mint.o
+mint.lib: compiled/cast-mint.o compiled/clear-mint.o compiled/copy-mint.o compiled/copy-mint-manually.o compiled/free-mint.o compiled/get-mint.o compiled/init-mint.o compiled/load-mint.o compiled/make-mint.o compiled/mint-size.o compiled/set-mint.o compiled/trim-mint.o compiled/get-absolute-mint.o
+	ar r mint.lib compiled/cast-mint.o compiled/clear-mint.o compiled/copy-mint.o compiled/copy-mint-manually.o compiled/free-mint.o compiled/get-mint.o compiled/init-mint.o compiled/load-mint.o compiled/make-mint.o compiled/mint-size.o compiled/set-mint.o compiled/trim-mint.o compiled/get-absolute-mint.o
 
-compiled/cast_mint.o: src/cast_mint.c 
-	gcc $(CFLAGS) -c src/cast_mint.c -o compiled/cast_mint.o
+compiled/cast-mint.o: src/cast-mint.c 
+	gcc $(CFLAGS) -c src/cast-mint.c -o compiled/cast-mint.o
 
-compiled/clear_mint.o: src/clear_mint.c 
-	gcc $(CFLAGS) -c src/clear_mint.c -o compiled/clear_mint.o
+compiled/clear-mint.o: src/clear-mint.c 
+	gcc $(CFLAGS) -c src/clear-mint.c -o compiled/clear-mint.o
 
-compiled/copy_mint.o: src/copy_mint.c 
-	gcc $(CFLAGS) -c src/copy_mint.c -o compiled/copy_mint.o
+compiled/copy-mint.o: src/copy-mint.c 
+	gcc $(CFLAGS) -c src/copy-mint.c -o compiled/copy-mint.o
 
-compiled/copy_mint_manually.o: src/copy_mint_manually.c 
-	gcc $(CFLAGS) -c src/copy_mint_manually.c -o compiled/copy_mint_manually.o
+compiled/copy-mint-manually.o: src/copy-mint-manually.c 
+	gcc $(CFLAGS) -c src/copy-mint-manually.c -o compiled/copy-mint-manually.o
 
-compiled/free_mint.o: src/free_mint.c 
-	gcc $(CFLAGS) -c src/free_mint.c -o compiled/free_mint.o
+compiled/free-mint.o: src/free-mint.c 
+	gcc $(CFLAGS) -c src/free-mint.c -o compiled/free-mint.o
 
-compiled/get_mint.o: src/get_mint.c 
-	gcc $(CFLAGS) -c src/get_mint.c -o compiled/get_mint.o
+compiled/get-mint.o: src/get-mint.c 
+	gcc $(CFLAGS) -c src/get-mint.c -o compiled/get-mint.o
 
-compiled/init_mint.o: src/init_mint.c 
-	gcc $(CFLAGS) -c src/init_mint.c -o compiled/init_mint.o
+compiled/init-mint.o: src/init-mint.c 
+	gcc $(CFLAGS) -c src/init-mint.c -o compiled/init-mint.o
 
-compiled/load_mint.o: src/load_mint.c 
-	gcc $(CFLAGS) -c src/load_mint.c -o compiled/load_mint.o
+compiled/load-mint.o: src/load-mint.c 
+	gcc $(CFLAGS) -c src/load-mint.c -o compiled/load-mint.o
 
-compiled/make_mint.o: src/make_mint.c 
-	gcc $(CFLAGS) -c src/make_mint.c -o compiled/make_mint.o
+compiled/make-mint.o: src/make-mint.c 
+	gcc $(CFLAGS) -c src/make-mint.c -o compiled/make-mint.o
 
 compiled/mint-size.o: src/mint-size.c 
 	gcc $(CFLAGS) -c src/mint-size.c -o compiled/mint-size.o
 
-compiled/set_mint.o: src/set_mint.c 
-	gcc $(CFLAGS) -c src/set_mint.c -o compiled/set_mint.o
+compiled/set-mint.o: src/set-mint.c 
+	gcc $(CFLAGS) -c src/set-mint.c -o compiled/set-mint.o
 
-compiled/trim_mint.o: src/trim_mint.c 
-	gcc $(CFLAGS) -c src/trim_mint.c -o compiled/trim_mint.o
+compiled/trim-mint.o: src/trim-mint.c 
+	gcc $(CFLAGS) -c src/trim-mint.c -o compiled/trim-mint.o
+
+compiled/get-absolute-mint.o: src/get-absolute-mint.c 
+	gcc $(CFLAGS) -c src/get-absolute-mint.c -o compiled/get-absolute-mint.o

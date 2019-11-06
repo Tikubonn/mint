@@ -2,15 +2,15 @@
 #include <stddef.h>
 #define max(a, b) (a)<(b)?(b):(a)
 
-void add_mint_manually (mint *numa, mint *numb, mint *numout){
-  size_t size = mint_real_size(numout);
-  unsigned int car = 0;
+void add_mint_manually (mint *number1, mint *number2, mint *result){
+  size_t size = mint_real_size(result);
+  unsigned int carried = 0; 
   for (size_t index = 0; index < size; index++){
-    mint_cell numca = get_mint(index, 0, numa);  
-    mint_cell numcb = get_mint(index, 0, numb);  
-    unsigned int numres = numca + numcb + car;
-    car = 0xff < numres;
-    set_mint(numres, index, 0, numout);
+    mint_cell value1 = get_mint(index, 0, number1);  
+    mint_cell value2 = get_mint(index, 0, number2);  
+    unsigned int value = value1 + value2 + carried;
+    carried = 0xff < value;
+    set_mint(value, index, 0, result);
   }
-  trim_mint(numout);
+  trim_mint(result);
 }

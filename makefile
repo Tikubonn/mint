@@ -1,5 +1,5 @@
 
-export CFLAGS += -g
+export CFLAGS += -Wall -g
 export rootdir := $(CURDIR)
 
 all: .always

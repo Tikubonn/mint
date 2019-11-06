@@ -73,3 +73,7 @@ extern mint *sub_mint (mint*, mint*);
 extern void xor_mint_manually (mint*, mint*, mint*);
 
 extern mint *xor_mint (mint*, mint*);
+
+void minus_mint_manually (mint*, mint*);
+
+extern mint *minus_mint (mint*);

@@ -35,3 +35,6 @@ extern size_t mint_real_size (mint*);
 extern void set_mint (mint_cell, size_t, size_t, mint*);
 
 extern void trim_mint (mint*);
+#include <stddef.h>
+
+extern mint_cell get_absolute_mint (size_t, size_t, mint*);

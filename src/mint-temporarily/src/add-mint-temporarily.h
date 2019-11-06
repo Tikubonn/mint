@@ -4,8 +4,8 @@ mint *__ ## var ## _add_argument1 = numa;\
 mint *__ ## var ## _add_argument2 = numb;\
 make_mint_temporarily(var,\
 add_mint_temporarily_max(\
-size_mint(__ ## var ## _add_argument1),\
-size_mint(__ ## var ## _add_argument2)) +1);\
+mint_size(__ ## var ## _add_argument1),\
+mint_size(__ ## var ## _add_argument2)) +1);\
 add_mint_manually(\
 __ ## var ## _add_argument1,\
 __ ## var ## _add_argument2, var);
