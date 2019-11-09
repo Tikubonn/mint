@@ -15,7 +15,7 @@ extern void free_mint (mint*);
 extern mint_cell get_mint (size_t, size_t, mint*);
 #include <stddef.h>
 
-extern void init_mint (mint_cell*, size_t, mint*);
+extern int init_mint (mint_cell*, size_t, mint*);
 
 extern void load_mint_from_int (int, mint*);
 extern void load_mint_from_long (long, mint*);

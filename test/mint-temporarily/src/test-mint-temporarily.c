@@ -3,6 +3,7 @@
 
 void test_mint_temporarily (){
 	make_mint_temporarily(number, sizeof(int));
+  test(number != NULL);
 	test(mint_real_size(number) == sizeof(int));
 	test(mint_size(number) <= mint_real_size(number));
 	set_mint(0xff, 0, 4, number);
@@ -21,5 +22,5 @@ void test_mint_temporarily (){
 	test(get_mint(2, 0, number) == 0);
 	test(get_mint(3, 0, number) == 0);
 	trim_mint(number);
-	test(mint_size(number) <= 1);
+	test(mint_size(number) <= mint_real_size(number));
 }

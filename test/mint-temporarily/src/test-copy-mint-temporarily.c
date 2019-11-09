@@ -3,6 +3,7 @@
 
 void test_copy_mint_temporarily (){
 	make_mint_temporarily(number, sizeof(int));
+  test(number != NULL);
 	test(mint_real_size(number) == sizeof(int));
 	test(mint_size(number) <= mint_real_size(number));
 	set_mint(0xff, 0, 4, number);
@@ -16,6 +17,7 @@ void test_copy_mint_temporarily (){
 	test(get_mint(1, 4, number) == 0xff);
 	test(get_mint(2, 4, number) == 0xff);
 	copy_mint_temporarily(copied, number);
+  test(copied != NULL);
 	test(mint_real_size(copied) == mint_size(number));
 	test(mint_size(copied) <= mint_real_size(copied));
 	test(get_mint(0, 0, copied) == 0xf0);

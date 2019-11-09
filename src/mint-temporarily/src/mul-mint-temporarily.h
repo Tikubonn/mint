@@ -4,6 +4,8 @@ mint *__ ## var ## _mul_argument2 = numb;\
 make_mint_temporarily(var,\
 mint_size(__ ## var ## _mul_argument1)+\
 mint_size(__ ## var ## _mul_argument2)+1);\
+if (var != NULL){\
 mul_mint_manually(\
 __ ## var ## _mul_argument1,\
-__ ## var ## _mul_argument2, var);
+__ ## var ## _mul_argument2, var);\
+}

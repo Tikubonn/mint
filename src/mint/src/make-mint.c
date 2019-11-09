@@ -2,17 +2,24 @@
 #include <stdlib.h>
 
 mint *make_mint (size_t size){
-  mint_cell *sequence = malloc(sizeof(mint_cell) * size);
-  if (sequence == NULL){
-    return NULL;
+  if (0 < size){
+    mint_cell *sequence = malloc(sizeof(mint_cell) * size);
+    if (sequence == NULL){
+      return NULL;
+    }
+    mint *numout = malloc(sizeof(mint));
+    if (numout == NULL){
+      free(sequence);
+      return NULL;
+    }
+    if (init_mint(sequence, size, numout) != 0){
+      free(sequence);
+      free(numout);
+      return NULL;
+    }
+    return numout;
   }
-  mint *numout = malloc(sizeof(mint));
-  if (numout == NULL){
-    free(sequence);
-    return NULL;
-  }
-  init_mint(sequence, size, numout);
-  return numout;
+  return NULL;
 }
 
 mint *make_mint_from_int (int num){
@@ -34,15 +41,18 @@ mint *make_mint_from_long (long num){
 }
 
 static mint *make_mint_from_negative_string (char *sequence, size_t size){
-  mint_cell num10seq[1];
-  mint num10;
-  init_mint(num10seq, 1, &num10);
-  load_mint_from_int(10, &num10);
+  /*
+  mint_cell tenseq[1];
+  mint ten;
+  init_mint(tenseq, 1, &ten);
+  load_mint_from_int(10, &ten);
+  */
+  make_mint_from_int_temporarily(ten, 10);
   mint *numresult = make_mint_from_int(0);
   for (size_t index = 0; index < size; index++){
     char character = sequence[index];
     if ('0' <= character && character <= '9'){
-      mint *nummul = mul_mint(numresult, &num10);
+      mint *nummul = mul_mint(numresult, ten);
       mint_cell numcharseq[1];
       mint numchar;
       init_mint(numcharseq, 1, &numchar);
@@ -60,15 +70,18 @@ static mint *make_mint_from_negative_string (char *sequence, size_t size){
 }
 
 static mint *make_mint_from_positive_string (char *sequence, size_t size){
-  mint_cell num10seq[1];
-  mint num10;
-  init_mint(num10seq, 1, &num10);
-  load_mint_from_int(10, &num10);
+/*
+  mint_cell tenseq[1];
+  mint ten;
+  init_mint(tenseq, 1, &ten);
+  load_mint_from_int(10, &ten);
+  */
+  make_mint_from_int_temporarily(ten, 10);
   mint *numresult = make_mint_from_int(0);
   for (size_t index = 0; index < size; index++){
     char character = sequence[index];
     if ('0' <= character && character <= '9'){
-      mint *nummul = mul_mint(numresult, &num10);
+      mint *nummul = mul_mint(numresult, ten);
       mint_cell numcharseq[1];
       mint numchar;
       init_mint(numcharseq, 1, &numchar);

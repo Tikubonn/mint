@@ -9,3 +9,9 @@ typedef struct mint {
 	size_t seek;
 	size_t size;
 } mint;
+
+typedef struct mint_io_buffer {
+  char *sequence;
+  size_t seek;
+  size_t size;
+} mint_io_buffer;

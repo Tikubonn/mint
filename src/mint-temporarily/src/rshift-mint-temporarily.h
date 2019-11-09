@@ -15,6 +15,8 @@ rshift_mint_temporarily_max(\
 1,\
 __ ## var ## _rshift_size -\
 __ ## var ## _rshift_offset));\
+if (var != NULL){\
 rshift_mint_manually(\
 __ ## var ## _rshift_argument1,\
-__ ## var ## _rshift_argument2, var);
+__ ## var ## _rshift_argument2, var);\
+}

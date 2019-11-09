@@ -13,6 +13,8 @@ make_mint_temporarily(var,\
 __ ## var ## _lshift_size +\
 __ ## var ## _lshift_offset +\
 (__ ## var ## _lshift_seek ? 1 : 0));\
+if (var != NULL){\
 lshift_mint_manually(\
 __ ## var ## _lshift_argument1,\
-__ ## var ## _lshift_argument2, var);
+__ ## var ## _lshift_argument2, var);\
+}

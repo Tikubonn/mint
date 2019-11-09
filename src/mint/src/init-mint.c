@@ -7,9 +7,13 @@ static void clear (mint_cell *sequence, size_t size){
 	}
 }
 
-void init_mint (mint_cell *sequence, size_t size, mint *numin){
-	clear(sequence, size);
-	numin->sequence = sequence;
-  numin->seek = size;
-  numin->size = size;
+int init_mint (mint_cell *sequence, size_t size, mint *numin){
+  if (0 < size){
+    clear(sequence, size);
+    numin->sequence = sequence;
+    numin->seek = size;
+    numin->size = size;
+    return 0;
+  }
+  return 1;
 }

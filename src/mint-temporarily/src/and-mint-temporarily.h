@@ -6,6 +6,8 @@ make_mint_temporarily(var,\
 and_mint_temporarily_max(\
 mint_size(__ ## var ## _and_argument1),\
 mint_size(__ ## var ## _and_argument2)));\
+if (var != NULL){\
 and_mint_manually(\
 __ ## var ## _and_argument1,\
-__ ## var ## _and_argument2, var);
+__ ## var ## _and_argument2, var);\
+}
